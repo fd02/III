@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.0;
+contract Bank {
+    int private bal;
+    // Constructor to initialize the balance
+    constructor() {
+        bal = 1;
+    }
+    // View function to get the balance
+    function getBalance() public view returns (int) {
+        return bal;
+    }
+    // Function to withdraw an amount from the balance
+    function withdraw(int amt) public {
+        require(amt > 0, "Withdrawal amount must be positive.");
+        require(bal >= amt, "Insufficient balance.");
+        bal -= amt;
+    }
+    // Function to deposit an amount to the balance
+    function deposit(int amt) public {
+        require(amt > 0, "Deposit amount must be positive.");
+        bal += amt;
+    }
+}
